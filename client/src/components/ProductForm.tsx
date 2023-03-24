@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import IProduct, { ProductType } from "../interface/IProduct";
 
@@ -22,7 +23,7 @@ export default function ProductForm({ product = initialState, onSubmit }: Produc
   } = useForm();
 
   return (
-    <div className="max-w-sm m-auto bg-neutral-700 p-6 rounded-md shadow-lg">
+    <div className="w-96 m-auto mt-24 bg-gray-300 p-6 rounded-md shadow-lg">
       <form
         onSubmit={handleSubmit((data) => {
           onSubmit(data);
@@ -78,10 +79,10 @@ export default function ProductForm({ product = initialState, onSubmit }: Produc
           />
         </div>
         <div className="flex gap-4">
-          <button className="px-4 py-2 bg-red-700 hover:bg-red-600 rounded-sm text-white" type="reset">
+          <Link href="/" className="px-4 py-2 bg-lime-500 hover:bg-lime-400 rounded-sm text-white">
             Cancelar
-          </button>
-          <button className="flex-1 px-4 py-2 bg-sky-800 hover:bg-sky-700 rounded-sm text-white" type="submit">
+          </Link>
+          <button className="flex-1 px-4 py-2 bg-purple-800 hover:bg-purple-600 rounded-sm text-white" type="submit">
             Salvar
           </button>
         </div>

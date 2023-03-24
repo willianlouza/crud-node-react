@@ -22,10 +22,11 @@ export default function Home({ products }: InferGetServerSidePropsType<typeof ge
     const newState = currentProducts.filter((p) => p.id !== product.id);
     setProducts(newState);
   };
+
   return (
     <MainLayout title="Início">
-      <div className="flex justify-between my-8">
-        <Link href="/create" className="px-4 py-2 text-white bg-sky-800 hover:bg-sky-700 rounded-sm">
+      <div className="flex flex-col items-center gap-4 justify-between lg:flex-row my-8">
+        <Link href="/create" className="px-4 py-2 text-white bg-purple-800 hover:bg-purple-600 rounded-sm">
           Adicionar Produto
         </Link>
 
@@ -33,28 +34,35 @@ export default function Home({ products }: InferGetServerSidePropsType<typeof ge
           <form className="flex gap-2" onSubmit={handleSubmit(filter)}>
             <input
               {...register("search")}
-              className="px-4 py-2 text-black focus:ring focus:outline rounded-sm"
+              className="px-4 py-2 text-black bg-gray-300 focus:ring focus:outline rounded-sm"
               type="text"
               name="search"
               id="search"
             />
-            <button type="submit" className="px-4 py-2 bg-sky-800 hover:bg-sky-700 text-white rounded-sm">
+            <button type="submit" className="px-4 py-2 bg-purple-800 hover:bg-purple-600 text-white rounded-sm">
               Pesquisar
             </button>
           </form>
         </div>
       </div>
-      <ProductTable products={currentProducts} onDeleteProduct={onDeleteProduct} />
+      <div className="px-2 lg:px-0 min-w-[32em] lg:min-w-[42rem]">
+        <ProductTable products={currentProducts} onDeleteProduct={onDeleteProduct} />
+      </div>
     </MainLayout>
   );
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const result = await api("/products");
-  const data = await result.data;
+  let products: null | IProduct = null;
+  try {
+    const result = await api("/products");
+    products = await result.data;
+  } catch (error) {
+    console.log(error);
+  }
   return {
     props: {
-      products: data as IProduct,
+      products: products,
     },
   };
 };

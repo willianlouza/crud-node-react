@@ -11,7 +11,7 @@ export default function MainLayout({ children, title }: { children: React.ReactN
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <main>{children}</main>
+      <main className={`max-w-fit m-auto`}>{children}</main>
     </>
   );
 }

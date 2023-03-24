@@ -7,23 +7,23 @@ export type ProductTableProps = {
 };
 export default function ProductTable({ products, onDeleteProduct }: ProductTableProps) {
   return (
-    <div className="shadow-md rounded-lg">
+    <div className="w-full shadow-md rounded-lg">
       <table className="w-full text-sm text-left text-gray-400">
         <thead className="text-xs text-gray-400 uppercase">
           <tr>
-            <th scope="col" className="px-6 py-3 bg-neutral-900">
+            <th scope="col" className="px-6 py-3 bg-gray-300">
               Nome
             </th>
-            <th scope="col" className="px-6 py-3 bg-neutral-600">
+            <th scope="col" className="px-6 py-3 bg-gray-200">
               Tipo
             </th>
-            <th scope="col" className="px-6 py-3 bg-neutral-900">
+            <th scope="col" className="px-6 py-3 bg-gray-300">
               Descrição
             </th>
-            <th scope="col" className="px-6 py-3 bg-neutral-600">
+            <th scope="col" className="px-6 py-3 bg-gray-200">
               Inclusão
             </th>
-            <th scope="col" className="px-6 py-3 bg-neutral-900">
+            <th scope="col" className="px-6 py-3 bg-gray-300">
               Ações
             </th>
           </tr>
