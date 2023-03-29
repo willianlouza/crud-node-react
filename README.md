@@ -16,11 +16,11 @@ npm install
 yarn 
 ```
 Com todas as dependências do Backend instaladas, agora é necessário realizar a migration do Prisma
-A string de conexão está no arquivo '.env'
+a string de conexão está no arquivo '.env'
 ```zsh
-npx prisma migrate
+npx prisma migrate dev --name init
 //ou
-yarn prisma migrate
+yarn prisma migrate dev --name init
 ```
 
 Agora é so iniciar o servidor de Backend
